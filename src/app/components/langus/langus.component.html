@@ -1,0 +1,27 @@
+<div *ngIf="allLanguages.length < 5">
+    <form action="" [formGroup]="myForm" (ngSubmit)="addLanguage()">
+        <h1>Add a language!</h1>
+        <br>
+        <label for="">name</label>
+        <input type="text" formControlName="name">
+        <label for="">stars</label>
+        <input type="number" formControlName="stars">
+        <button type="submit" [disabled]="!myForm.valid">add language</button>
+    </form>
+</div>
+
+<br>
+<hr>
+<br>
+<h2>{{allLanguages.length}} languages added</h2>
+<div>
+    <h2>List of languages</h2>
+    <br>
+    <ul>
+        <li *ngFor="let language of allLanguages">
+            <p>{{language.id}} {{language.name}}</p>
+            <button [routerLink]="['/detail', language.id]">info</button>
+            <button (click)="deleteMe(language)">delete</button>
+        </li>
+    </ul>
+</div>
